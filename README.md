@@ -9,5 +9,6 @@ On GPUs, operations like vector addition benefit from uniform execution across a
 A = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] is accessed in a row major order as [1,2,3,4,5,6,7,8,9] and element A[i][j] is accessed as A[i * N + j] (where N = 3).
      
 Block Size: threadsPerBlock(2, 2) means each block has 2 threads in the x-direction (blockDim.x = 2) and 2 in the y-direction (blockDim.y = 2).
+
 Grid Size: For a 3x3 matrix, blocksPerGrid((N + 1) / 2, (M + 1) / 2) computes to (2, 2), so we have a 2x2 grid of blocks.
 

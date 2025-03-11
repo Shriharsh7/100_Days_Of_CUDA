@@ -7,8 +7,13 @@ On GPUs, operations like vector addition benefit from uniform execution across a
 # Day 2
 
 A = [[1, 2, 3], [4, 5, 6], [7, 8, 9]] is accessed in a row major order as [1,2,3,4,5,6,7,8,9] and element A[i][j] is accessed as A[i * N + j] (where N = 3).
-     
 Block Size: threadsPerBlock(2, 2) means each block has 2 threads in the x-direction (blockDim.x = 2) and 2 in the y-direction (blockDim.y = 2).
+Grid Size: For a 3x3 matrix, blocksPerGrid((N + 1) / 2, (M + 1) / 2) computes to (2, 2), so we have a 2x2 grid of blocks
 
-Grid Size: For a 3x3 matrix, blocksPerGrid((N + 1) / 2, (M + 1) / 2) computes to (2, 2), so we have a 2x2 grid of blocks.
+# Day 3
 
+Each element of the resulting matrix C is computed by a unique thread, leveraging a 2D grid of thread blocks for parallel execution.
+Threads are organized into blocks of size BLOCK_SIZE x BLOCK_SIZE (e.g., 16x16), defined using dim3 blockDim(BLOCK_SIZE, BLOCK_SIZE).
+The grid size is calculated as gridDim((N + BLOCK_SIZE - 1)/BLOCK_SIZE, (N + BLOCK_SIZE - 1)/BLOCK_SIZE) to ensure all matrix elements are covered, even if N isn’t a multiple of BLOCK_SIZE.
+The matrixMulKernel computes each element of C by iterating over a row of A and a column of B, summing their products.
+The result is verified on the host by checking if each element of C equals 2*N (since A[i] = 1.0 and B[i] = 2.0), confirming the multiplication is correct.

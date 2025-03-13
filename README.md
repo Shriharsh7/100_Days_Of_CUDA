@@ -24,3 +24,9 @@
 - **Exponential Difference Calculation**: The code performs an element-wise computation, C[i][j] = exp(A[i][j] - B[i][j]), to calculate the exponential of the difference between two matrices, A and B, executed in       parallel on the GPU.
 - **Device Function Usage**: A device function, randomFunction, encapsulates the core transformation logic, enhancing code modularity and readability for GPU execution.
 - **Parallel Grid and Block Setup**: It employs a 2D grid and block configuration (dim3 gridDim((N + BLOCK_SIZE - 1) / BLOCK_SIZE, (N + BLOCK_SIZE - 1) / BLOCK_SIZE) and dim3 blockDim(BLOCK_SIZE, BLOCK_SIZE)),          ensuring efficient and complete processing of the matrix elements.
+# Day 5
+
+- **Sample-Parallel Processing:** Each thread block independently normalizes one sample's features.
+- **Shared Memory Reduction:** Efficiently computes mean and variance using parallel reduction in shared memory.
+- **Modular Kernel Design:** Separates statistics computation and normalization into two distinct kernels.
+- **Memory Optimization:** Minimizes global memory access by leveraging shared memory for intermediate results.

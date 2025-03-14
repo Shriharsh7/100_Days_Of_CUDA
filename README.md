@@ -30,3 +30,10 @@
 - **Shared Memory Reduction:** Efficiently computes mean and variance using parallel reduction in shared memory.
 - **Modular Kernel Design:** Separates statistics computation and normalization into two distinct kernels.
 - **Memory Optimization:** Minimizes global memory access by leveraging shared memory for intermediate results.
+
+# Day 6
+
+- Allocates host and device memory for a 512×512 grayscale image and a 3×3 convolution filter.
+- Initializes the input image (with a constant value) and copies both image and filter data to the GPU.
+- Launches a CUDA kernel that performs 2D convolution with zero-padding for boundary conditions.
+- Copies the processed result back to the host and prints the first 10 output values for verification.

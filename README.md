@@ -37,3 +37,17 @@
 - Initializes the input image (with a constant value) and copies both image and filter data to the GPU.
 - Launches a CUDA kernel that performs 2D convolution with zero-padding for boundary conditions.
 - Copies the processed result back to the host and prints the first 10 output values for verification.
+
+# Day 7
+
+- Allocates host and device memory for a 512×512 image and a 5×5 Gaussian filter.
+- Transfers the initialized image and filter from CPU memory to the GPU’s global memory.
+- Launches a CUDA kernel where each thread computes one pixel’s convolution using a 5×5 window with zero-padding at boundaries.
+- Copies the resulting blurred image back to the host and prints a few output values for verification.
+
+
+
+
+
+
+

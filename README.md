@@ -45,7 +45,23 @@
 - Launches a CUDA kernel where each thread computes one pixel’s convolution using a 5×5 window with zero-padding at boundaries.
 - Copies the resulting blurred image back to the host and prints a few output values for verification.
 
+# Day 8
 
+- **Shared Memory Tiling & Bank Conflict Avoidance:** The kernel uses a shared memory tile with an extra column (TILE_DIM+1) to avoid bank conflicts, which enhances performance by ensuring efficient memory access.
+- **Optimized Memory Access Patterns:** Global memory accesses are coalesced by loading a tile from the input matrix and writing it back in a transposed order, minimizing latency and maximizing throughput.
+- **Scalable Grid & Block Configuration:** The execution configuration is computed based on matrix dimensions, allowing the kernel to flexibly handle various sizes of matrices while maintaining high performance.
+
+# Day 9
+
+- **Parallel Maximum Reduction:** Uses CUDA shared memory to perform a parallel reduction that efficiently computes the maximum value from a large array.
+- **Hybrid CPU-GPU Approach:** Completes the final reduction on the CPU to minimize kernel overhead and efficiently handle the small set of results from each block.
+- **Foundation for Softmax Stability:** The computed maximum value is key for numerically stable softmax implementations by enabling max subtraction to prevent overflow.
+
+# Day 10
+
+- **Dual Kernel Comparison:** Implements both a naive and a shared-memory optimized softmax kernel, allowing you to compare a simple approach against one that leverages CUDA’s shared memory for faster reductions.
+- **CUDA Event Timing:** Uses CUDA events to measure kernel execution times, providing clear insights into the performance improvements achieved through optimization.
+- **Numerical Stability & Efficiency:** Both implementations subtract the maximum value to ensure numerical stability during exponentiation, with the optimized version reducing redundant work through parallel reduction.
 
 
 

@@ -63,6 +63,12 @@
 - **CUDA Event Timing:** Uses CUDA events to measure kernel execution times, providing clear insights into the performance improvements achieved through optimization.
 - **Numerical Stability & Efficiency:** Both implementations subtract the maximum value to ensure numerical stability during exponentiation, with the optimized version reducing redundant work through parallel reduction.
 
+# Day 11
+
+- **Implementation Overview:**
+This program implements the power method in CUDA to compute the largest eigenvalue of a 1024×1024 symmetric matrix. It demonstrates the use of GPU acceleration for matrix-vector multiplication and iterative eigenvalue estimation via the Rayleigh quotient.
+- **Output and Convergence Tracking:**
+The program prints the eigenvalue estimate at iteration 0, then every 10 iterations up to 100, followed by additional prints from iterations 900 through 1000. This detailed output helps users observe the convergence behavior of the power method over successive iterations.
 
 
 

@@ -70,6 +70,10 @@ This program implements the power method in CUDA to compute the largest eigenval
 - **Output and Convergence Tracking:**
 The program prints the eigenvalue estimate at iteration 0, then every 10 iterations up to 100, followed by additional prints from iterations 900 through 1000. This detailed output helps users observe the convergence behavior of the power method over successive iterations.
 
+# Day 12
+
+- This program implements the Jacobi iteration method to solve the linear system Ax=b using CUDA. The matrix A is constructed as a diagonally dominant matrix (to ensure convergence) and the right-hand side vector b is initialized with random values. The iterative solver updates the solution x in parallel using a CUDA kernel, making it a practical example of GPU-accelerated numerical methods.
+- The program runs for 1000 iterations, printing the first five entries of the solution x at key checkpoints (every 10 iterations from 0 to 100 and 900 to 1000). This detailed output helps users observe the convergence behavior of the iterative method and verify that the solver is working correctly.
 
 
 

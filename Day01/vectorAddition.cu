@@ -10,7 +10,8 @@ __global__ void addVectors(int *a, int *b, int *c, int n) {
     }
 }
 
-int main(){
+int main(){ 
+
     const int n = 1000000;  // Vector size
     int *ha, *hb, *hc;      // Host pointers (CPU)
     int *da, *db, *dc;      // Device pointers (GPU)
